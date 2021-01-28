@@ -1,0 +1,9 @@
+																
+Species				Height	Weight	Breeding Season
+
+Emperor Penguin		1.15m	30kg	April - December
+Chinstrap Penguin	69cm	4.5kg	December - March
+King Penguin		95cm	15kg	November/January (complex)
+Macaroni Penguin	68cm	4.5kg	December - March
+Gentoo Penguin		71cm	5.5kg	December - March
+
