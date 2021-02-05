@@ -23,6 +23,26 @@ public class FoldTest {
 
     //TODO: Write good tests...
 
+    @Test
+    public void foldContainsReadableFile(){
+    }
+
+    @Test
+    public void foldRespectsWidth(){
+    }
+
+    @Test
+    public void foldWorksIndependentlyOfTheOrder(){
+    }
+
+    @Test
+    public void foldWorksWithEmptyFiles(){
+    }
+
+    @Test
+    public void foldDoesNotAlteredTheFileForInvalid(){
+    }
+
 
     //Helper Methods
     //this methods recursively deletes everything in the directory
