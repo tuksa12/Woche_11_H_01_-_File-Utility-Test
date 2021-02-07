@@ -4,8 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pgdp.file.*;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -24,23 +23,42 @@ public class FoldTest {
     //TODO: Write good tests...
 
     @Test
-    public void foldContainsReadableFile(){
+    public void foldContainsReadableFile(){//Test to se if the file from fold is readable
+        assertTrue(Path.of(fold.toString()).toFile().canRead());
     }
 
     @Test
-    public void foldRespectsWidth(){
+    public void foldRespectsWidth(){//Test that reads the lines of the file and tests if those respects the width
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fold.toString()));
+            try{
+                int option = Integer.parseInt(fold.toString().substring(fold.toString().indexOf("=")+1,fold.toString().indexOf(" ")));
+                assertTrue(reader.readLine().length() < option);
+            } catch(Exception e){
+                try {
+                    assertTrue(reader.readLine().length() < 80);
+                } catch (IOException ioException) {
+                    fail();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            fail();
+        }
     }
 
     @Test
-    public void foldWorksIndependentlyOfTheOrder(){
+    public void foldWorksIndependentlyOfTheOrder(){//Tests if the file works independently of the order of "-w" and "-o"
+        assertTrue(fold.toString().indexOf("-w") > fold.toString().indexOf("-o") || fold.toString().indexOf("-w") < fold.toString().indexOf("-o") );
     }
 
     @Test
-    public void foldWorksWithEmptyFiles(){
+    public void foldWorksWithEmptyFiles(){//Tests if the file exists and have a lina lenght of 0
+        assertTrue(Path.of(fold.toString()).toFile().exists() && Path.of(fold.toString()).toFile().length() >= 0);
     }
 
     @Test
-    public void foldDoesNotAlteredTheFileForInvalid(){
+    public void foldDoesNotAlteredTheFileForInvalid(){//Test if the file is not altered if the parameters are invalid
+        assertTrue(Path.of(fold.toString()).toFile().exists());
     }
 
 
